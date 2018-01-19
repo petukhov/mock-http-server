@@ -96,7 +96,7 @@ if (ipport.toString().match(/:/)) {
 }
 
 
-if ((port == null) || (port === 0)) {
+if (!port) {
   console.log("Error: must specify a port");
   help();
   process.exit(1);
