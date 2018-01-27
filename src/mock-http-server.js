@@ -56,9 +56,10 @@ exports._generateResponseFilename = function(req, hash) {
   if (path.length > 100) {
     // Hash URL query parameters if the path is too long
     const searchHash = crypto.createHash('sha1');
-    searchHash.update(requestPath.search);
+    searchHash.update(requestPath.href);
     const sha1min = searchHash.digest('hex').slice(0, 6);
-    path = `${requestPath.pathname}-${sha1min}`;
+    const shortPathname = requestPath.pathname.slice(0, 10);
+    path = `${shortPathname}-${sha1min}`;
   }
 
   let host = '';

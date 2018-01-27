@@ -24,14 +24,7 @@ path        = require('path');
 exports.PlaybackServer = (PlaybackServer = class PlaybackServer extends events.EventEmitter {
 
   constructor(options) {
-    // Store responses keyed by filename
-    {
-      // Hack: trick Babel/TypeScript into allowing this before super.
-      if (false) { super(); }
-      let thisFn = (() => { this; }).toString();
-      let thisName = thisFn.slice(thisFn.indexOf('{') + 1, thisFn.indexOf(';')).trim();
-      eval(`${thisName} = this;`);
-    }
+    super();
     if (options == null) { options = {}; }
     this.options = options;
     this.responses = {};
